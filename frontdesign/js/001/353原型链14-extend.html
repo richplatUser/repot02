@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//通过原型链实现继承：方案一：属性、方法定义在对象中
+
+		function Shape(){
+			this.name='shape';
+			this.toString=function(){
+				return this.name;
+			}
+		}
+		function TwoDShape(){
+			this.name='2D shape';
+		}
+		function Triangle(side,height){
+			this.name='triangle';
+			this.side=side;
+			this.height=height;
+			this.getArea=function(){
+				return this.side*this.height/2;
+			}
+		}
+
+		//继承
+		TwoDShape.prototype=new Shape();
+		Triangle.prototype=new TwoDShape();
+		//继承时必须重置constructor属性，避免其它副作用
+		TwoDShape.prototype.constructor=TwoDShape;
+		Triangle.prototype.constructor=Triangle;
+
+
+		var myTriangle=new Triangle(5,10);
+		console.log(myTriangle.getArea());
+		console.log(myTriangle.toString());//找到Shape的toString方法
+		console.log(myTriangle.constructor);
+		console.log(myTriangle instanceof Triangle);
+		console.log(myTriangle instanceof TwoDShape);
+		console.log(myTriangle instanceof Shape);
+		console.log(Shape.prototype.isPrototypeOf(myTriangle));
+		console.log(TwoDShape.prototype.isPrototypeOf(myTriangle));
+		console.log(Triangle.prototype.isPrototypeOf(myTriangle));
+		console.log(Object.prototype.isPrototypeOf(myTriangle));
+		console.log(String.prototype.isPrototypeOf(myTriangle));//false
+		
+		var td=new TwoDShape();
+		console.log(td.constructor);
+		console.log(td.toString());
+		
+		var s=new Shape();
+		console.log(s.constructor);
+		console.log(s.toString());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</script>
+	</body>
+</html>

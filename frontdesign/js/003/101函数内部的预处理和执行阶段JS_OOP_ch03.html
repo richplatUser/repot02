@@ -1,0 +1,31 @@
+<html>
+
+<body>
+
+<script type="text/javascript">
+	
+	function f (a,b) {
+		alert(a);//会变成对函数的引用
+		alert(b);//值为传入的参数值2不变
+
+		var b = 100;
+		function a () {
+			
+		}
+	}
+
+	f(1,2);
+
+	function f1 () {
+		function f2 () {
+			b = 100;//会变成全局变量
+		}
+
+		f2();
+	}
+	f1();
+</script>
+</body>
+
+
+</html>

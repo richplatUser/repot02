@@ -1,0 +1,30 @@
+<html>
+
+<body>
+
+<script type="text/javascript">
+	//以下所有变量和函数在alert时没有定义，处理于预处理阶段
+
+    alert(a);//以var定义的变量，预处理阶段为undefined
+	// alert(b);//没有以var定义，预处理阶段不处理，语法错误
+	 alert(f);//输出函数体的内容
+	 alert(g);//以var定义的变量，只不过是函数表达式，预处理阶段为undefined
+
+    //以下为为变量和函数的定义和执行阶段
+	 var a = 5;
+	 b = 6;
+	 alert(b);//6
+	 function f(){
+	 	console.log('f');
+	 }
+
+	 var g = function  () {
+	 	console.log('g');
+	 }
+	 alert(g);//输出函数g的代码体
+
+</script>
+</body>
+
+
+</html>

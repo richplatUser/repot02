@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="test1" id='btn1' />
+		<script type="text/javascript">
+			var btn1=document.getElementById("btn1");
+//			btn1.onclick=function(event){
+//				alert(event.type);
+//			}
+			btn1.addEventListener('click',function(e){
+//				alert(e.type);
+//				alert(this.tagName);
+				alert(e.currentTarget);
+				alert(this===e.currentTarget);
+				alert(e.target);
+				alert(this===e.target);
+			},false);
+			
+			document.body.onclick=function(event){
+				alert(event.currentTarget===this);//true
+				alert(event.target===document.getElementById('btn1'));//当点击body时为false；点击按钮时为false
+				alert(document.body===this);//true
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

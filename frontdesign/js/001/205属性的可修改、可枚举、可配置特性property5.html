@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+<script type="text/javascript">
+	//通过自定义创建对象，属性的可修改、可枚举、可配置、属性值都为True
+var obj={};
+//obj.x=1;
+//obj.y=2;
+//obj.x=123;
+//obj.y=4566;
+//console.log(obj.x+'\n'+obj.y);
+//for(var p in obj){
+//	console.log(p);
+//}
+//console.log(Object.keys(obj));
+//console.log(Object.getOwnPropertyNames(obj));
+
+	//通过Object.defineProperty方法创建的对象，默认情况下属性的可修改（是否可以修改值）、可枚举（是否可以遍历值）、可配置（是否可以删除属性、是否可以修改writable、enumerable属性）、属性值都为false
+Object.defineProperty(obj,'x',{
+	value:12
+});
+//console.log(obj.x);
+//obj.x=456;
+//console.log(obj.x);//因为没有定义可修改，故值不变
+//for(p in obj){
+//	console.log('对象中得属性：'+p+'\n');//因为没有定义可枚举，故不能枚举
+//}
+//console.log(Object.keys(obj));
+//console.log(Object.getOwnPropertyNames(obj));//返回空，因为不可枚举
+
+//Object.defineProperty参数：变量名、属性名、属性特性列表
+Object.defineProperty(obj,'y',{
+	value:56,
+	writable:true,//代表是否可写
+	enumerable:true,//是否可枚举
+	configurable:false//是否可配置
+});
+//console.log(obj.y);
+//obj.y=777;
+//console.log(obj.y);
+//for(p in obj){
+//	console.log(p);
+//}
+// console.log(Object.keys(obj));
+//console.log(Object.getOwnPropertyNames(obj));
+
+
+
+Object.defineProperty(obj,'z',{
+	value:'this is a test',
+	writable:true,
+	enumerable:true,
+	configurable:true
+});
+console.log(obj.z);
+obj.z='hello';//修改值根据是否可修改
+console.log(obj.z);
+delete obj.z;//删除根据是否可配置configurable
+console.log(obj.z);
+
+Object.defineProperty(obj,'k',{
+	value:1,
+	writable:false,
+	enumerable:false,
+	configurable:true
+});
+console.log(obj.k);
+obj.k=3;
+console.log(obj.k);
+
+
+Object.defineProperty(obj,'k',{
+	writable:true,
+	enumerable:true
+});
+
+obj.k=5;
+console.log(obj.k);
+console.log(obj.propertyIsEnumerable('k'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+	</body>
+</html>

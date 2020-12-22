@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//通过闭包突破全局作用域链
+			function f(){
+				var a='king';
+				return function(){
+					return a;
+				}
+			}
+//			alert(a);
+			var test=f();//调用函数f并符值给test，第一次运行把函数f中的匿名函数作为返回值返回，即test引用了该匿名函数，或等于了该匿名函数
+			alert(test());//调用test，相当于运行函数中的匿名函数
+
+
+
+		</script>
+	</body>
+</html>

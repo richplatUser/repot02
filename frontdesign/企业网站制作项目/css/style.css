@@ -1,0 +1,491 @@
+/**/
+/*所有元素外边距、内边距为0*/
+*{
+    margin:0;
+    padding:0;
+}
+
+/*页面整体：背景色、字体*/
+body{
+    background-color: #f3f3f3;
+    font-family: "微软雅黑";
+}
+
+.container{
+    width: 1000px;
+    /*margin: 0 auto;!*上边距为0，其它边距为auto，即可以居中显示*!*/
+    margin: auto;/*效果同上*/
+}
+
+.title_bg{
+    background: url(../images/title_bg.jpg);
+    height: 45px;
+    line-height: 45px;
+    padding-left: 10px;
+}
+.title_bg h2 a{
+    color: #444444;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+
+/*头部样式*/
+div#logo{
+    display: inline-block;
+    vertical-align: top;/*定义行内元素在行框内的垂直对齐方式*/
+    width: 755px;
+}
+div#sousuo{
+    display: inline-block;
+    vertical-align: top;/*定义行内元素在行框内的垂直对齐方式*/
+    margin-top: 58px;/*外边距的上边距*/
+    text-align: right;/*文本对齐方式*/
+    width: 240px;
+}
+
+input[type="text"] {
+    font-family: "微软雅黑";/*字体*/
+    background: #f3f3f3;/*背景*/
+    border: solid 1px #ccc;/*边框：样式 宽度 颜色*/
+    height: 40px;/*高度*/
+    line-height: 40px;/*line-height用来指定块容器内行框的最小高度。行框的最小高度由基线上升部的最小高度加下伸部的最小深度组成*/
+    font-size: 20px;/*字号大小*/
+    padding-left: 10px;/*左内边距*/
+    width: 165px;/*宽度*/
+    display: inline-block;/*指定对象为内联块元素*/
+    vertical-align: top;/*定义行内元素在行框内的垂直对齐方式*/
+}
+input[type="submit"] {
+    font-family: "微软雅黑";
+    background-color: #3598db;
+    color: #fff;
+    border: solid 1px #3598db;
+    height: 42px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+div#nav{
+    background-color: #3598db;
+    height: 60px;/*固定高度*/
+}
+
+div#nav nav li{
+    display: inline-block;/*指定对象为内联块元素*/
+    line-height: 60px;/*同父元素的高度一致，内容会居中*/
+    padding: 0 10px;/*上下内边距为0，左右内边距为10px*/
+    border-right: solid 1px #2f89c5;/*竖线分隔效果*/
+    /*以下为兼容浏览器模式写法：变换效果*/
+    -webkit-transition:background 1s linear;
+    -moz-transition:background 1s linear;
+    -ms-transition:background 1s linear;
+    -o-transition:background 1s linear;
+    transition:background 1s linear;
+}
+
+div#nav nav li.on , div#nav nav li:hover{
+    background-color: #2f89c5;/*鼠标移上去的背景色*/
+}
+
+div#nav nav a{
+    color: #ffffff;
+    text-decoration: none;/*定义元素文本装饰简写方式。即链接的下划线、类型、颜色全部为none*/
+    font-size: 16px;
+}
+
+/*内容主体样式*/
+div#body_wrapper{
+    margin-top: 20px;/*顶部外边距*/
+}
+div#body_wrapper article{
+    width: 628px;
+    display: inline-block;
+    vertical-align: top;/*垂直方向顶部对齐*/
+    margin-right: 20px;/*右边外边距*/
+}
+div#body_wrapper aside{
+    width: 352px;
+    display: inline-block;
+    vertical-align: top;/*垂直方向顶部对齐*/
+}
+/*轮播图的样式*/
+section#lunbotu{
+    box-shadow: 1px 4px 15px #A39F9F;/*盒阴影*/
+}
+div.wrap a{
+    color:#fff;
+}
+div#slide-holder {
+    width : 628px;
+    height : 278px;
+}
+div#slide-runner {
+    width : 628px;
+    height : 278px;
+    overflow : hidden;/*隐藏溢出容器的内容且不出现滚动条。*/
+    position : absolute;/*absolute： 对象脱离常规流，此时偏移属性参照的是离自身最近的定位祖先元素，如果没有定位的祖先元素，则一直回溯到body元素。盒子的偏移位置不影响常规流中的任何元素，其margin不与其他任何margin折叠。*/
+}
+div#slide-holder img {
+    margin : 0;
+    display : none;/*none： 隐藏对象。与visibility属性的hidden值不同，其不为被隐藏的对象保留其物理空间*/
+    position : absolute;
+}
+div#slide-controls {
+    left : 0;
+    bottom : 0px;
+    width : 628px;
+    height : 46px;
+    display : none;
+    position : absolute;
+}
+div#slide-controls p.text {
+    float : left;
+    color : #fff;
+    display : inline;
+    font-size : 10px;
+    line-height : 16px;
+    margin : 15px 0 0 20px;
+    text-transform : uppercase;/* 将每个单词转换成大写*/
+}
+p#slide-nav {
+    float : right;
+    height : 24px;
+    display : inline;
+    margin : 11px 15px 0 0;
+}
+p#slide-nav a {
+    float : left;
+    width : 24px;
+    height : 24px;
+    display : inline;
+    font-size : 11px;
+    margin : 0 5px 0 0;
+    line-height : 24px;
+    font-weight : bold;
+    text-align : center;
+    text-decoration : none;
+    background-position : 0 0;
+    background-repeat : no-repeat;
+}
+p#slide-nav a.on {
+    background-position : 0 -24px;
+}
+p#slide-nav a {
+    background-image : url(../images/silde-nav.png);
+}
+
+
+/*新闻部分*/
+section#xinwen{
+    margin-top: 20px;
+}
+section#xinwen li{
+    display: inline-block;
+    width: 100%;
+    vertical-align: bottom;
+    margin-top: 10px;
+}
+section#xinwen li a{
+    display: inline-block;
+    vertical-align: top;
+    height: 165px;
+}
+section#xinwen li img{
+    width: 315px;
+    height: 165px;
+}
+section#xinwen li a.ms{
+    width: 308px;
+    position: relative;/*relative： 对象遵循常规流，并且参照自身在常规流中的位置通过top，right，bottom，left这4个定位偏移属性进行偏移时不会影响常规流中的任何元素。*/
+    background: rgb(53, 152, 220);
+    color: #fff;
+    padding:10px;
+    text-decoration: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+a.ms h3{
+    border-bottom: solid 1px #fff;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 288px;
+    overflow: hidden;
+}
+a.ms p{
+    height: 105px;
+    overflow: hidden;
+}
+.sanjiaoxing{
+    width: 20px;
+    height: 20px;
+    background: #3598DC;
+    position: absolute;
+    top: 25px;
+    left: -10px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/*集团活动*/
+section#huodong{
+    margin-top: 20px;
+}
+section#huodong_a{
+    margin-top: 10px;
+}
+section#huodong_a li{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 9px;
+}
+section#huodong_a li:last-child{
+    margin-right: 0;
+}
+section#huodong_a li img{
+    width: 150px;
+    height: 150px;
+}
+section#huodong_b{
+    width: 469px;
+    display:inline-block;
+    margin-top:10px;
+    vertical-align: top;
+    margin-right: 9px;
+}
+section#huodong_b li:before{
+    content: counter(listxh);
+    background: #444;
+    padding: 2px 5px;
+    color: #fff;
+    margin-right: 5px;
+}
+section#huodong_b li{
+    counter-increment: listxh;
+    display: inline-block;
+    width: 100%;
+    vertical-align: bottom;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 16px;
+    -webkit-transition:text-shadow 1s linear;
+    -moz-transition:text-shadow 1s linear;
+    -ms-transition:text-shadow 1s linear;
+    -o-transition:text-shadow 1s linear;
+    transition:text-shadow 1s linear;
+}
+section#huodong_b li:first-child:before,section#huodong_b li:nth-child(2):before,section#huodong_b li:nth-child(3):before{
+    background: #3598DC;
+}
+section#huodong_b li:last-child:before{
+    padding: 2px;
+    font-size: 14px;
+}
+section#huodong_b a{
+    color: #444444;
+    text-decoration: none;
+}
+section#huodong_b li:hover{
+    text-shadow: 1px 4px 4px #000;
+}
+section#huodong_c{
+    width: 150px;
+    display:inline-block;
+}
+section#huodong_c li{
+    display:inline-block;
+    vertical-align: top;
+    margin-top:10px;
+}
+section#huodong_c li:first-child,section#huodong_c li:first-child img{
+    width:150px;
+    height:205px;
+}
+section#huodong_c li:last-child,section#huodong_c li:last-child img{
+    width:150px;
+    height:154px;
+}
+/*博文信息*/
+section#bowen_a li{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+    width: 172px;
+    height: 136px;
+    text-align: center;
+    display: inline-block;
+}
+section#bowen_a a{
+    color: #444;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}
+section#bowen_a li:first-child{
+    margin-right: 8px;
+}
+section#bowen_a li a:first-child{
+    width: 172px;
+    height: 111px;
+}
+section#bowen_a li a:last-child{
+    height: 21px;
+    overflow: hidden;
+}
+section#bowen_b{
+
+}
+section#bowen_b li:before{
+    content: counter(listxh);
+    background: #3598db;
+    padding: 2px 5px;
+    color: #fff;
+    margin-right: 5px;
+}
+section#bowen_b li{
+    counter-increment: listxh;
+    display: inline-block;
+    width: 100%;
+    vertical-align: bottom;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 8px;
+    -webkit-transition:text-shadow 1s linear;
+    -moz-transition:text-shadow 1s linear;
+    -ms-transition:text-shadow 1s linear;
+    -o-transition:text-shadow 1s linear;
+    transition:text-shadow 1s linear;
+}
+section#bowen_b li:hover{
+    text-shadow: 1px 4px 4px #000;
+}
+section#bowen_b a{
+    color: #444444;
+    text-decoration: none;
+}
+/*招聘信息*/
+section#zhaoping{
+    margin-top: 20px;
+}
+section#zhaoping li:before{
+    content: counter(listxh);
+    background: #3598db;
+    padding: 2px 5px;
+    color: #fff;
+    margin-right: 5px;
+}
+section#zhaoping li{
+    counter-increment: listxh;
+    display: inline-block;
+    width: 100%;
+    vertical-align: bottom;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 14px;
+    -webkit-transition:text-shadow 1s linear;
+    -moz-transition:text-shadow 1s linear;
+    -ms-transition:text-shadow 1s linear;
+    -o-transition:text-shadow 1s linear;
+    transition:text-shadow 1s linear;
+}
+section#zhaoping li:hover{
+    text-shadow: 1px 4px 4px #000;
+}
+section#zhaoping a{
+    color: #444444;
+    text-decoration: none;
+}
+section#zhaoping li:last-child:before{
+    padding: 2px;
+    font-size: 14px;
+}
+/*联系我们*/
+section#lianxi{
+    margin-top: 20px;
+}
+section#lianxi a ,section#lianxi img{
+    display: inline-block;
+    width: 352px;
+    height: 199px;
+}
+/*子公司*/
+section#zigongsi{
+
+}
+section#zigongsi li{
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    margin-top: 10px;
+}
+section#zigongsi li a{
+    color: #444;
+    text-decoration: none;
+}
+section#zigongsi li h4{
+    font-size: 16px;
+    height: 28px;
+    line-height: 28px;
+}
+.zgsjj{
+    -webkit-transition:padding 0.5s linear;
+    -moz-transition:padding 0.5s linear;
+    -ms-transition:padding 0.5s linear;
+    -o-transition:padding 0.5s linear;
+    transition:padding 0.5s linear;
+}
+.zgsjj:hover{
+    border: solid 1px #3598db;
+    padding: 10px 0;
+}
+.zgsjj a{
+    display: inline-block;
+    vertical-align: top;
+}
+.zgsjj a:first-child{
+    text-decoration: none;
+    width: 170px;
+}
+.zgsjj a:last-child{
+    width: 175px;
+    font-size: 12px;
+    height: 50px;
+    overflow: hidden;
+}
+/*版权信息*/
+#footer_wrapper{
+    background-color: #3598db;
+    margin-top: 20px;
+    padding: 40px 0;
+}
+#footer_wrapper li{
+    display: inline-block;
+    vertical-align: top;
+    border-right:solid 1px #fff;
+    padding-right: 18px;
+    margin-left: 18px;
+}
+#footer_wrapper li:last-child{
+    border: 0;
+}
+#footer_wrapper footer{
+    text-align: center;
+}
+#footer_wrapper a{
+    color: #ffffff;
+    text-decoration: none;
+}
+#footer_wrapper p{
+    color: #ffffff;
+    margin-top: 10px;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Web Storage本地储存</title>
+    <script type="text/javascript" src="./js/webstorage.js"></script>
+</head>
+<body>
+    <h1>Web Storage本地储存</h1>
+    <p id="msg"></p>
+    <input type="text" id="input">
+    <input type="button" value="保存session数据" onclick="saveSessionStorage('input');">
+    <input type="button" value="读取session数据" onclick="loadSessionStorage('msg');">
+    <br><br>
+
+    <input type="button" value="保存local数据" onclick="saveLocalStorage('input');">
+    <input type="button" value="读取local数据" onclick="loadLocalStorage('msg');">
+</body>
+</html>

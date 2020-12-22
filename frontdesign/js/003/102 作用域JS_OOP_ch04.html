@@ -1,0 +1,104 @@
+<html>
+
+<head>
+	<title>scope basic</title>
+</head>
+<body>
+
+<script type="text/javascript">
+// alert(a);//全局变量，undefined
+// alert(b);//全局变量，undefined
+// alert(c);//未使用var定义，出错
+// alert(d);	//函数内部变量，出错
+
+// var a = 1;
+// if(false){
+// 	var b = 2;
+// }else {
+// 	c = 3;
+// }
+// function f () {
+// 	var d = 4;
+// }
+
+
+
+//循环体中的变量i是全局变量，说明js没有{}表示的块元素作用域
+// for(var i =0; i < 3 ; i++){
+
+// }
+// alert(i);
+
+
+
+
+// function f () {
+
+// 	alert(x);//x重没定义过
+// }
+
+// function f1 () {
+// 	var x = 5;
+// 	f();  
+
+// }
+
+// function f2 () {
+// 	var x = 6;
+// 	f();
+// }
+// f1();//调用时会出错，f1调用的内部函数f中的变量x没有定义过
+
+
+
+
+//作用域链条
+// function  f () {   //scope == window
+// 	//le{x =100}  ->f.[[scope]]
+// 	var x = 100;
+// 	function g () {  //g.[[scope]] ==f.le
+// 		//le  ->g.[[scope]]
+// 	}
+// 	g();
+// }
+
+// g.le ->g.[[scope]]  ->f.   ->f.[[scope] ==winow]
+
+
+
+// function f () {  
+// 	var x = 100;
+
+// 	var g = function  () { 
+// 		alert(x);
+// 	}
+// 	g();
+// }
+// f();
+
+
+// var x = 12;
+// function f () {
+// 	var x = 100;
+// //g.[[scope ]]=window
+// 	var g = new Function("","alert(x)");//new Function定义的函数中使用的变量只使用全局变量
+// 	g();
+// }
+// f();
+
+
+(function(){
+	var  a = 5;
+	var b = 6;
+	function f(){
+		alert(a);
+	}
+	window.f  = f;
+})();
+f();
+
+</script>
+</body>
+
+
+</html>

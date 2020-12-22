@@ -1,0 +1,159 @@
+<html>
+
+<head>
+	<title>Closure</title>
+</head>
+<body>
+
+<div id="1">1</div>
+<div id="2">2</div>
+<div id="3">3</div>
+<script type="text/javascript">
+var i;
+for( i=1;i<=3;i++){
+	var ele = document.getElementById(i);
+	ele.onclick=(function(id){
+			return function(){
+				alert(id);
+			}
+		})(i);
+}
+
+//闭包示例1
+function f(){
+	var num = 1;
+
+	function g(){
+		alert(num);//2
+	}
+	num++;
+	g();//闭包函数真正执行，结果：2，并不是1。
+}
+f();
+
+
+//示例
+function f(){
+	var num = 1;
+	return function(){
+		num++;
+		alert(num);
+	}
+}
+var result1 = f();//父函数每次调用都生成一个新的闭包
+
+result1();
+result1();
+
+var result2 = f();
+result2();
+result2();
+
+
+//普通方法实现加1，需要全局变量
+// var a = 0;
+// function add(){
+	
+// 	a++;
+// 	alert(a);
+
+// }
+// add();
+// add();
+
+//闭包方式实现加1，无需全局变量
+function f(){
+	var a = 0;//多次调用的时候该值不会每次都初始化为0
+	return function(){
+		a++;
+		alert(a);
+	}
+}
+var result = f();
+result();
+result();
+
+
+
+
+//闭包的第二个应用
+function calFactory(base){
+	return function(max){
+		var total = 0;
+		for(var i = 1;i<= max; i++){
+			total +=i;
+		}
+		 return total + base;
+	}
+}
+var adder = calFactory(2);
+//alert(adder(3));
+//alert(adder(4));
+
+var adder2 = calFactory(1);
+alert(adder2(3));
+
+
+
+
+//闭包应用3
+(function(){
+	 var m =0;
+	 function getM(){
+	 	return m;
+	 }
+	 function setM(val){
+	 	m = val;
+	 }
+	 window.g = getM;
+	 window.f = setM;
+})();
+
+f(12);
+alert(g());
+
+
+
+
+	// function f1 () {
+	// 	var a = 10;
+	// 	var b = 20;
+	// 	function f2(){
+	// 		console.log(a);
+	// 	}
+	// 	f2();
+	// }
+	// f1();
+
+	// function f1 () {
+	// 	var a = 10;
+	// 	var b = 20;
+	// 	return function f2(){
+	// 		console.log(a);
+	// 	}
+		
+	// }
+	// var result = f1();
+	// result();
+
+
+// console.log(f2)
+// 	function f1(){
+// 		var m = 10;
+// 		function f2(){
+// 			var n = 20;
+// 			function f3(){
+// 				console.log(m);
+// 			}
+// 			f3();
+// 		}
+// 		f2();
+
+// 	}
+// 	f1();
+
+</script>
+</body>
+
+
+</html>

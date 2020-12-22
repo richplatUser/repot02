@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function f1(){
+				var n=1;
+				test=function(){
+					n+=1;
+				};
+				function f2(){
+					alert(n);
+				}
+				return f2;
+			}
+			var res=f1();//根据返回值，得到函数f2
+			alert(res());//运行函数f2，结果为1
+			test();//运行f1内赋值给test的匿名函数，n的值加1。定义时，var定义局部变量，不加var为全局变量，所以可以在外部调用。
+			alert(res());//运行结果为2
+
+
+			
+		</script>
+	</body>
+</html>

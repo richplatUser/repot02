@@ -1,0 +1,220 @@
+# jQuery Selectors
+
+## Basics  基本选择器
+$('code') 标签选择器，如div
+$('#myid') id选择器
+$('.myclass') 类选择器
+$('*')  全部元素
+$('code, #myid, .myclass')  组合选择器，示例中code标签、id、类myclass都被选择中
+
+
+
+## Hierarchy  层次（等级选择器）
+
+$('div code')  多个元素以空格分隔：div标签下的所有code标签元素，可以在div下好多层都可以，不需要是直接子元素
+$('li > ul')   多个元素以>号分隔：下级元素必须是上级元素的直接子元素
+$('strong + em') +号分隔：兄弟选择器，仅选择strong后第1个同级兄弟选择器
+$('strong ~ em') ~号分隔：兄弟选择器，选择strong后所有同级兄弟选择器
+
+
+
+## Basic Filters  基本过滤器：过滤器一般不单独使用，它通常附加在选择器上，帮助我们更精确地定位元素
+
+$('li:first') 当前页面第1个li元素
+$('li:last')  当前页面最后一个li元素
+$('li:not(li:first)')  页面所有的li但不包括not（）内的所有元素
+$('li:even')  even所有偶数的，第1个为0是偶数
+$('li:odd')   odd所有奇数的，第1个为0是偶数，因此实际从第2个元素开始
+$('li:eq(1)')  eq等于 括号内为元素的下标，从0开始
+$('li:gt(2)')  gt大于
+$('li:lt(2)')  lt小于
+$(':header')  所有标题元素 <h1> - <h6>
+$(':animated')  所有动画元素
+
+
+
+## Content Filters 内容过滤器
+
+$('li:contains(second-level)')  包含指定字符串的所有元素  	$(":contains('W3School')")
+$('li:has(a)')  has() 包含子元素节点  contains是包含指定的内容
+$(':empty')  	无子（元素）节点的所有元素，如<div>aaa</div> 有文本内容也算子元素，也不是空
+$('p:parent')   empty的所操作，不为空即有子节点的元素。如<div>aaa</div> 有文本内容也算子元素，也不是空
+
+
+
+## Visibility Filters 可视化过滤器
+
+$(':hidden') //display none   选择css显示属性为none的，即隐藏的元素
+$(':visible') //display not none  选择css显示属性不为none的
+
+
+
+## Attribute Filters 属性过滤器
+
+$('li[class]')  	所有带有 href 属性的元素  $("[href]")
+$('a[xxx="self"]')  所有 href 属性的值等于 "#" 的元素  $("[href='#']")
+$('a[rel!="nofollow"]')  所有 href 属性的值不等于 "#" 的元素  $("[href!='#']")
+$('[class^="my"]')  ^=   以my开头的属性
+$('[class$=".jpg"]')  $=   以.jpg结尾的
+$('a[href*="zip"]')  *=  包含zip，不管出现位置
+$('a[rel][href][title="blog"]')  需要满足所有属性过滤条件。即带有rel属性、href属性、且title属性的值为blog
+
+
+
+## Child Filters 子元素过滤器
+
+$('li:first-child') 第1个子元素。与:first first()的区别，参见下面
+$('li:last-child')  最后一个子元素
+$('li:nth-child(even)')  子元素中的下标为偶数的
+$('li:nth-child(odd)')   子元素中的下标为奇数的
+$('li:nth-child(2)')     子元素中的下标为第n个
+$('li:nth-child(2n)')    子元素中的下标为第n个，可以进行计算。如：2n/3n/3n+2等
+$('code:only-child')     子元素是唯一的，没有兄弟结点
+
+## Forms  表单选择器
+
+$(':input')         所有 <input> 元素
+$(':text')          所有 type="text" 的 <input> 元素
+$(':password')  所有 type="password" 的 <input> 元素
+$(':radio')     所有 type="radio" 的 <input> 元素
+$(':checkbox')  所有 type="checkbox" 的 <input> 元素
+$(':submit')    所有 type="submit" 的 <input> 元素
+$(':image')     	所有 type="image" 的 <input> 元素
+$(':reset')     所有 type="reset" 的 <input> 元素
+$(':button')    所有 type="button" 的 <input> 元素
+$(':file')      所有 type="file" 的 <input> 元素
+
+
+
+## Form Filters  表单过滤器
+
+$('input:enabled')      所有激活的 input 元素
+$(':disabled')          所有禁用的 input 元素
+$(':checked')           所有被选中的 input 元素
+$(':selected')          所有被选取的 input 元素
+
+
+2. 分类
+		1. 基本选择器
+			1. 标签选择器（元素选择器）
+				* 语法： $("html标签名") 获得所有匹配标签名称的元素
+			2. id选择器
+				* 语法： $("#id的属性值") 获得与指定id属性值匹配的元素
+			3. 类选择器
+				* 语法： $(".class的属性值") 获得与指定的class属性值匹配的元素
+			4. 并集选择器：
+				* 语法： $("选择器1,选择器2....") 获取多个选择器选中的所有元素
+		2. 层级选择器
+			1. 后代选择器
+				* 语法： $("A B ") 选择A元素内部的所有B元素
+			2. 子选择器
+				* 语法： $("A > B") 选择A元素内部的所有B子元素
+		3. 属性选择器
+			1. 属性名称选择器
+				* 语法： $("A[属性名]") 包含指定属性的选择器
+			2. 属性选择器
+				* 语法： $("A[属性名='值']") 包含指定属性等于指定值的选择器
+			3. 复合属性选择器
+				* 语法： $("A[属性名='值'][]...") 包含多个属性条件的选择器
+		4. 过滤选择器
+			1. 首元素选择器
+				* 语法： :first 获得选择的元素中的第一个元素
+			2. 尾元素选择器
+				* 语法： :last 获得选择的元素中的最后一个元素
+			3. 非元素选择器
+				* 语法： :not(selector) 不包括指定内容的元素
+			4. 偶数选择器
+				* 语法： :even 偶数，从 0 开始计数
+			5. 奇数选择器
+				* 语法： :odd 奇数，从 0 开始计数
+			6. 等于索引选择器
+				* 语法： :eq(index) 指定索引元素
+			7. 大于索引选择器
+				* 语法： :gt(index) 大于指定索引元素
+			8. 小于索引选择器
+				* 语法： :lt(index) 小于指定索引元素
+			9. 标题选择器
+				* 语法： :header 获得标题（h1~h6）元素，固定写法
+		5. 表单过滤选择器
+			1. 可用元素选择器
+				* 语法： :enabled 获得可用元素
+			2. 不可用元素选择器
+				* 语法： :disabled 获得不可用元素
+			3. 选中选择器
+				* 语法： :checked 获得单选/复选框选中的元素
+			4. 选中选择器
+				* 语法： :selected 获得下拉框选中的元素
+
+
+
+jQuery中:first，:first-child，first()的使用区别
+ul li:first  先获取页面中所有li节点对象数组，然后返回数组中的第一个li节点对象 。
+:first-child  选择器选取属于其父元素的第一个子元素的所有元素。
+first() 返回被选元素的首个元素。
+
+测试代码如下：
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <ul>
+        <li>ul_1 item 1</li>
+        <li>ul_1 item 2</li>
+        <li>ul_1 item 3</li>
+        <li>ul_1 item 4</li>
+        <li>ul_1 item 5</li>
+    </ul>
+    <ul>
+        <li>ul_2 item 1</li>
+        <li>ul_2 item 2</li>
+        <li>ul_2 item 3</li>
+        <li>ul_2 item 4</li>
+        <li>ul_2 item 5</li>
+    </ul>
+</body>
+</html>
+先测试 :first，代码如下
+
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("ul li:first").css("background-color","yellow");
+    })
+</script>
+效果如下; 只有第一个被选中,
+
+测试:first-child，代码如下
+
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("ul li:first-child").css("background-color","yellow");
+    })
+ </script>
+效果如下：
+
+发现每一个ul的第一个li元素都被选中，
+
+测试first()，代码如下
+
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("ul li").first().css("background-color","yellow");
+    })
+ </script>
+效果如下：
+
+
+
+结果发现只有第一个被选中，
+
+这里发现，:first选中的是第一个ul元素的第一个li子元素，然后添加样式，不论这个元素在本页面有多少个，它只找第一个
+
+而:first-child选择的是所有ul下面的第一个子元素是li的元素，有两个ul父元素，ul_1,ul_2他们都拥有各自的子元素li。
+
+最后是first()它和:first 类似，获取的第一个ul元素的第一个li子元素，不管有多少个本元素

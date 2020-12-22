@@ -1,0 +1,71 @@
+<html>
+
+<head>
+	<title>Inherit by func Class</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+ //创建父类
+ //创建子类
+ //建立关系
+
+//  function  P () {
+ 	
+//  }
+//  function C(){
+
+//  }
+//  //inherit
+//  //C.prototype = P.prototype;
+
+// //C.prototype = new P();
+
+// C.prototype = Object.create(P.prototype);
+
+//父类
+function Person(name,age){
+	this.name = name;
+	this.age = age;
+}
+ //父类的公共属性和方法
+Person.prototype.headCount = 1;//公共属性
+Person.prototype.eat = function() {//公共方法
+	console.log("eating...");
+};
+
+//子类
+function Programmer(name,age,title){
+	Person.apply(this,arguments);
+
+}
+
+//实现继承
+// Programmer.prototype = Object.create(Person.prototype);//实现继承
+// Programmer.prototype.constructor = Programmer;//把子类的constructor构造器修正回来
+
+createEx(Programmer,Person);//自定义的继承
+
+//子类的公共属性和方法必须放在实现继承的后面
+Programmer.prototype.language = "javascript";
+Programmer.prototype.work = function(){
+	console.log("i am writing code in " + this.language);
+	Programmer.base.eat();
+	
+}
+
+function createEx(Child,Parent){
+	function F(){};
+	F.prototype = Parent.prototype;
+	Child.prototype = new F();
+	Child.prototype.constructor = Child;
+	Child.super = Child.base = Parent.prototype;
+}
+
+
+</script>
+</body>
+
+
+</html>

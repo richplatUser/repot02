@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//通过原型链实现继承：方案四：属性、方案定义在原型中，且不再new新对象，直接关联原型 同时，在方案三的基础上，添加构造器，解决方案三的问题
+			function Shape(){};
+			Shape.prototype.name='Shape';
+			Shape.prototype.toString=function(){
+				return this.name;
+			}
+			function TwoDShape(){};
+			//声明临时构造器
+			var F=function(){};
+			F.prototype=Shape.prototype;
+			TwoDShape.prototype=new F();
+			TwoDShape.prototype.constructor=TwoDShape;
+			TwoDShape.prototype.name='2D Shape';
+			
+			function Triangle(side,height){
+				this.side=side;
+				this.height=height;
+			}
+			//声明临时构造器
+			var F=function(){};
+			F.prototype=TwoDShape.prototype;
+			Triangle.prototype=new F();
+			Triangle.prototype.constructor=Triangle;
+			Triangle.prototype.name='triangle';
+			Triangle.prototype.getArea=function(){
+				return this.side*this.height/2;
+			}
+			
+			var my=new Triangle(5,10);
+			console.log(my.getArea());
+			console.log(my.toString());
+			
+			console.log(my.__proto__.__proto__.__proto__.constructor);
+			var s=new Shape();
+			console.log(s.name);//Shape  解决了方案三的副作用
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

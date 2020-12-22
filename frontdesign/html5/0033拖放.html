@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //被拖放的元素正在本元素范围内移动时发生
+        function ondragoverEvent(ev)
+        {
+            //不执行默认处理（默认情况下浏览器拒绝被拖放）
+            ev.preventDefault();
+            ev.dataTransfer.dropEffect = 'copy';//设置拖放时鼠标显示的效果
+        }
+
+        //开始拖放时发生
+        function dragstart(ev)
+        {
+//         使用setData(数据类型，携带的数据)
+//         方法将要拖放的数据存入dataTransfer对象
+//            ev.clearData();//清除拖放的数据
+            ev.effeAllowed = 'all';
+            ev.dataTransfer.setData("Text",ev.target.id);
+        }
+
+        //其他元素被拖放到了本元素中时发生
+        function ondropEvent(ev)
+        {
+            //不执行默认处理（浏览器默认拒绝被拖放）
+            ev.preventDefault();
+            //使用getData()获取到数据，然后赋值给data
+            var data=ev.dataTransfer.getData("Text");
+            //使用appendChild方法把拖动的节点放到元素节点中成为他的子节点
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+    <style>
+        #tuo{
+            background: #e54d26;
+            width: 540px;
+            height: 320px;
+        }
+        #cun{
+            width: 540px;
+            height: 320px;
+            border: 2px solid #D2D2D2;
+            box-shadow: 1px 4px 8px #646464;
+        }
+    </style>
+</head>
+<body>
+<!--承载被拖放元素的容器：ondrop事件：其他元素被拖放到了本元素中时发生 ondragover事件：被拖放的元素正在本元素范围内移动时发生-->
+<div  id="cun" ondrop="ondropEvent(event)" ondragover="ondragoverEvent(event)" ></div>
+<br/>
+<!--被拖放目标元素：draggable="true"可拖放设置为true、ondragstart事件：开始拖放-->
+<img src="./img/html5.png" id="tuo" width="500" height="280" draggable="true" ondragstart="dragstart(event)"   />
+
+</body>
+</html>

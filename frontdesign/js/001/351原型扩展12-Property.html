@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Product(name){
+				this.name=name;
+			}
+			Product.prototype.name='音响';
+			var p1=new Product('相机');
+			console.log(p1.name);
+			delete p1.name;
+			console.log(p1.name);
+			p1.name='手机';
+			console.log(p1.name);
+
+			var obj={
+				username:'king',
+				age:12,
+				addr:'北京',
+				email:'382771946@qq.com'
+			};
+
+			for(var i in obj){
+				console.log(obj[i]);
+			}
+
+
+			
+			function Product(name,color){
+				var test01=123;//var定义的是局部变量，即私有属性，继承对象不会有该属性
+				test02="abc";//没有用var/也没有用this，定义的变量是全局变量，在任何地方都可以调用，继承的对象也不会有该属性
+				this.name=name;//可继承变量
+				this.color=color;//可继承变量
+				this.someMethod=function(){//可继承函数，即方法
+					return 'this is a test';
+				}
+			}
+			//原型上添加属性，对所有根据Product创建的对象，都包含该属性且其值一样
+			Product.prototype.price=1234;
+			Product.prototype.memory=32;
+			var p1=new Product('苹果手机','白色');
+
+			//可以遍历自身属性和继承的属性
+			for(var p in p1){
+				console.log(p);
+			}
+
+			//只遍历自身属性
+			for(var p in p1){
+				if(p1.hasOwnProperty(p)){
+					console.log(p);
+				}
+			}
+
+
+
+			
+			var monkey={
+				hair:true,
+				feeds:'香蕉',
+				breathes:'air'
+			};
+			function Human(name){
+				this.name=name;
+			}
+			Human.prototype=monkey;
+			var person1=new Human('king');
+			console.log(person1.name);
+			console.log(monkey.isPrototypeOf(person1));
+
+			var person2=new Human('queen');
+			person2.feeds='火锅';
+			person2.learn='Js课程';
+			console.log(person2.learn);
+			console.log(person2.feeds);
+			console.log(person2.name);
+			console.log(person2.breathes);
+			person2.constructor='this is a test';
+			console.log(person2.__proto__);
+			console.log(person2.constructor);
+			monkey.test='hello maizi';
+			console.log(person2.test);
+			console.log(typeof person2.__proto__);
+			console.log(typeof person2.prototype);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

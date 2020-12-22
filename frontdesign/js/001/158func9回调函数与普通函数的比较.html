@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//函数定义
+			//将参数值*2,存入数组,返回
+			function cheng2(a,b,c){
+				var i,arr=[];
+				for(i=0;i<3;i++){
+					arr[i]=arguments[i]*2;
+				}
+				return arr;
+			}
+			//将参数值加1
+			function jia1(a){
+				return a+1;
+			}
+			//以下为普通函数调用
+			var arr1=[];
+			arr1=cheng2(10,20,30);//将参数值*2,存入数组,返回
+			alert(arr1);
+			for(var i=0;i<3;i++){
+				arr1[i]=jia1(arr1[i]);//将参数值加1
+			}
+			alert(arr1);
+
+
+			//将参数值加1
+		function addOne(a){
+			return a+1;
+		}
+
+			//将参数值*2,存入数组,返回
+			//其中1个参数为函数类型的变量
+		function test(a,b,c,callback){
+			var i,arr=[];
+			for(i=0;i<3;i++){
+				arr[i]=callback(arguments[i]*2);//将值的计算结果,做为参数传入另一个函数,运行后返回结果
+			}
+			return arr;
+		}
+		alert(test(5,6,7,addOne));
+		alert(test(5,6,7,function(a){return a+2}));//直接将匿名函数做为回调函数的参数
+
+			//定义函数
+		function test1(a,b){
+			return a*b;
+		}
+		alert(test1.call(test1,5,10));//通过系统提供的call方法回调函数
+
+			//通过系统提供的apply方法回函数,该方法的参数必须为玫个数组
+		var params=[3,4];
+		alert(test1.apply(test1,params));
+
+	//自调用函数的形式
+			//无参自调用函数
+		(
+		function(){
+			alert('this is a test');
+		}
+		)();
+
+			//有参自调用函数
+		(
+			function(a,b){
+				alert(a+b);
+			}
+		)(3,5);
+		
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
